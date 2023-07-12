@@ -6,22 +6,24 @@ import Movies from '../component/Movies/Movies'
 const inter = Inter({ subsets: ['latin'] })
 import { ROUTES } from '../utils/routes';
 import { useEffect, useState } from 'react';
+import { moviesData } from '../mockdata/moviesData';
 export default function Home() {
   
   const [movies, setMovies] = useState([])
   useEffect(()=>{
     const getTreadingMovies = async () =>{
-      const options = {
-        headers: {
-            accept: 'application/json',
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`
-        }
-    }
-    const response:any = await fetch(ROUTES.fetchTrendingMovies, options);
-    const data = await response.json()
-    console.log("Treading Movies", response)
-    console.log("data:", data)
-    setMovies(data.results)
+    //   const options = {
+    //     headers: {
+    //         accept: 'application/json',
+    //         Authorization: `Bearer ${process.env.NEXT_PUBLIC_BEARER_TOKEN}`
+    //     }
+    // }
+    // const response:any = await fetch(ROUTES.fetchTrendingMovies, options);
+    // const data = await response.json()
+    // console.log("Treading Movies", response)
+    // console.log("data:", data)
+    const data = moviesData.trendingMovies || []
+    setMovies(data)
     }
 
     getTreadingMovies()
