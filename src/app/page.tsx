@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 import { ROUTES } from '../utils/routes';
 import { useEffect, useState } from 'react';
 import { moviesData } from '../mockdata/moviesData';
+import Tabs from "../component/Tabs/Tabs"
 export default function Home() {
   
   const [movies, setMovies] = useState([])
@@ -32,6 +33,7 @@ export default function Home() {
   return (
     <div>
     <h1 className='text-4xl text-white text-center mt-4'>Movie App</h1>
+    <Tabs currentTab={"movies"} />
     <Movies movies={movies} title="Treading Movies"/>
     </div>
   )
